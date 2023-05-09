@@ -1,10 +1,13 @@
 import React from "react";
+import ItemDetails from "./ItemDetails";
 
 function InfoPage(){
     return (
         <>
-        {/* ITEM DETAILS */}
+        <ItemDetails />
         {/* REVIEWS */}
         </>
     );
 }
+
+export default InfoPage;

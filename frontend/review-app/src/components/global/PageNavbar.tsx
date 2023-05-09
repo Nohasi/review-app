@@ -7,8 +7,8 @@ import '../../App.css';
 
 export default function PageNavbar() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="absolute" style={{ background: '#808080' }}>
+    <Box sx={{ flexGrow: 1, paddingBottom: '75px' }}>
+      <AppBar style={{ background: '#808080' }}>
         <Toolbar>
           <Button color="inherit" className='Navbar-button'>View Peripherals</Button>
           <Button color="inherit" className='Navbar-button'>Add Peripherals</Button>
