@@ -4,8 +4,8 @@ import ItemDetails from "./ItemDetails";
 function InfoPage(){
     return (
         <>
-        <ItemDetails />
-        {/* REVIEWS */}
+            <ItemDetails />
+            {/* REVIEWS */}
         </>
     );
 }

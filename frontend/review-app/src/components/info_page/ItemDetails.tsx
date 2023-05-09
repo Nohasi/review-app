@@ -1,32 +1,24 @@
 import React from "react";
-import { Box, Paper } from "@mui/material";
-import { styled } from '@mui/material/styles';
+import { Box } from "@mui/material";
 import Grid from '@mui/material/Grid';
+import InfoTable from "./InfoTable";
 
 function ItemDetails() {
-    const Item = styled(Paper)(({ theme }) => ({
-        backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-        ...theme.typography.body2,
-        padding: theme.spacing(1),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-      }));
       
     return (
         <div>
-            <Box sx={{ flexGrow: 1 }}>
+            <Box sx={{ flexGrow: 1, paddingLeft: '30px', paddingRight: '30px' }}>
+                <h1 style={{paddingBottom: '30px'}}>Qanba Obsidian 2</h1>
             <Grid container spacing={2} >
-                <Grid item xs={6} md={8}>
-                <Item>xs=6 md=8</Item>
+                <Grid item xs={4} style={{
+                    backgroundImage: 'url("https://cdn11.bigcommerce.com/s-tk3bsu7rib/images/stencil/1280x1280/products/133/570/Obsidian_2_ARCADE_JOYSTICKBLACK__49126.1681176700.jpg?c=2")',
+                    backgroundSize: 'contain',
+                    height:'500px',
+                    backgroundRepeat: 'no-repeat'
+                }}>
                 </Grid>
-                <Grid item xs={6} md={4}>
-                <Item>xs=6 md=4</Item>
-                </Grid>
-                <Grid item xs={6} md={4}>
-                <Item>xs=6 md=4</Item>
-                </Grid>
-                <Grid item xs={6} md={8}>
-                <Item>xs=6 md=8</Item>
+                <Grid item xs={8}>
+                    <InfoTable />
                 </Grid>
             </Grid>
             </Box>
