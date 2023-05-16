@@ -3,7 +3,7 @@ import React from "react";
 function PageFooter() {
     return(
         <>
-            <footer className="PageFooter">
+            <footer style={{marginBottom: "20px"}}>
                 Mohammed Alhosani ©
             </footer>
         </>
