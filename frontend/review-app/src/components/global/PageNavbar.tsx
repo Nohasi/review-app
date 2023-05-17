@@ -10,8 +10,7 @@ export default function PageNavbar() {
     <Box sx={{ flexGrow: 1, paddingBottom: '75px' }}>
       <AppBar style={{ background: '#808080' }}>
         <Toolbar>
-          <Button color="inherit" className='Navbar-button'>View Peripherals</Button>
-          <Button color="inherit" className='Navbar-button'>Add Peripherals</Button>
+          <Button color="inherit" className='Navbar-button' href="itemlist">View All Items</Button>
         </Toolbar>
       </AppBar>
     </Box>
