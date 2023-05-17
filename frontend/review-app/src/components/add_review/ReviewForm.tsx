@@ -1,5 +1,6 @@
 import { Box, Container, Button } from "@mui/material";
 import TextField from '@mui/material/TextField';
+import { Link } from "react-router-dom";
 import '../../App.css';
 
 
@@ -18,7 +19,9 @@ function ReviewForm() {
                         <TextField id="description" label="Description" variant="standard" fullWidth multiline/>
                     </div>
                     <div style={{textAlign:"center"}}>
-                        <Button href="iteminfo" variant="contained" sx={{marginBottom:"30px", backgroundColor:"#808080", "&:hover": {backgroundColor: "#6b6b6b", boxShadow: 5} }} className="Navbar-button">Submit Review</Button>
+                        <Link to={{pathname: '/iteminfo'}}>
+                            <Button variant="contained" sx={{marginBottom:"30px", backgroundColor:"#808080", "&:hover": {backgroundColor: "#6b6b6b", boxShadow: 5} }} className="Navbar-button">Submit Review</Button>
+                        </Link>
                     </div>
                 </Box>
             </Container>
