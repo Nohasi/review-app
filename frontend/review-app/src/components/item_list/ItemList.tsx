@@ -4,7 +4,7 @@ import ItemCard from "./ItemCard";
 function ItemList() {
     return (
         <div>
-            <Container>
+            <Container sx={{paddingBottom: "30px"}}>
                 <h1> Item List</h1>
                 <ItemCard />
             </Container>

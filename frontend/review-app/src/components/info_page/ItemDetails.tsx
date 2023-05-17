@@ -14,7 +14,8 @@ function ItemDetails() {
                         backgroundImage: 'url("https://cdn11.bigcommerce.com/s-tk3bsu7rib/images/stencil/1280x1280/products/133/570/Obsidian_2_ARCADE_JOYSTICKBLACK__49126.1681176700.jpg?c=2")',
                         backgroundSize: 'contain',
                         height:'300px',
-                        backgroundRepeat: 'no-repeat'
+                        backgroundRepeat: 'no-repeat',
+                        marginTop: "16px"
                     }}>
                     </Grid>
                     <Grid item xs={8}>

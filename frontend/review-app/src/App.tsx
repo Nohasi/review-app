@@ -13,7 +13,8 @@ function App() {
 
         <BrowserRouter>
           <Routes>
-            <Route path="" element={<InfoPage />} />
+            <Route path="" element={<ItemList />} />
+            <Route path="/iteminfo" element={<InfoPage />} />
             <Route path="/itemlist" element={<ItemList />} />
           </Routes>
         </BrowserRouter>
