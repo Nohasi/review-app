@@ -3,20 +3,44 @@ import TextField from '@mui/material/TextField';
 import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Rating from '@mui/material/Rating';
+import Typography from '@mui/material/Typography';
 import '../../App.css';
 
 
 function ReviewForm() {
 
     let [name, setName] = useState('');
-    let [rating, setRating] = useState('');
     let [description, setDescription] = useState('');
+    const [rating, setRating] = useState<number | null>(0);
+    const [hover, setHover] = useState(-1);
 
     function submitForm(e: React.MouseEvent<HTMLButtonElement>) {
-        e.preventDefault();
-        axios.post('localhost', {name, rating, description});
+        axios.post('http://localhost:4090/addreview', {name, rating, description});
     }
 
+    const labels: { [index: string]: string } = {
+        0: '0',
+        0.5: '1',
+        1: '2',
+        1.5: '3',
+        2: '4',
+        2.5: '5',
+        3: '6',
+        3.5: '7',
+        4: '8',
+        4.5: '9',
+        5: '10',
+      };
+
+      function getLabelText(value: number) {
+        return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
+      }
+      
+      function HoverRating() {
+        const [value, setValue] = useState<number | null>(2);
+        const [hover, setHover] = useState(-1);
+      }
     return(
         <div>
             <Container sx={{paddingBottom: "30px"}}>
@@ -25,7 +49,25 @@ function ReviewForm() {
                         <TextField value={name} onChange={(e) => setName(e.target.value)} id="name" label="Name" variant="standard" fullWidth/>
                     </div>
                     <div style={{paddingBottom: "20px"}}>
-                        <TextField value={rating} onChange={(e) => setRating(e.target.value)} id="rating" label="Rating" variant="standard" fullWidth/>
+                    <Typography component="legend">Rating</Typography>
+                        <Rating
+                            name="simple-controlled"
+                            value={rating}
+                            precision={0.5}
+                            getLabelText={getLabelText}
+                            onChange={(event, newValue) => {
+                            setRating(newValue);
+                            }}
+                            onChangeActive={(event, newHover) => {
+                                setHover(newHover);
+                            }}
+                            sx={{transform: "translate(0, 7px)"}}
+                        />
+                        <span style={{paddingLeft: "15px"}}>
+                            {rating !== null && (
+                                labels[hover !== -1 ? hover : rating]
+                            )}
+                        </span>
                     </div>
                     <div style={{paddingBottom: "20px"}}>
                         <TextField value={description} onChange={(e) => setDescription(e.target.value)} id="description" label="Description" variant="standard" fullWidth multiline/>
