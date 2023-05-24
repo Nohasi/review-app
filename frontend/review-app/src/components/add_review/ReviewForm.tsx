@@ -2,21 +2,27 @@ import { Box, Container, Button } from "@mui/material";
 import TextField from '@mui/material/TextField';
 import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
 import '../../App.css';
+import itemDetails from "../../utils/itemDetails";
 
 
 function ReviewForm() {
+
+    const location = useLocation();
+    const {itemId, itemName, image, itemPrice, itemBrand, itemButtons, itemAnalog, compatibleSystems} = location.state;
 
     let [name, setName] = useState('');
     let [description, setDescription] = useState('');
     const [rating, setRating] = useState<number | null>(0);
     const [hover, setHover] = useState(-1);
 
+    let [returnedRating, setReturnedRating] = useState(0);
+
     function submitForm(e: React.MouseEvent<HTMLButtonElement>) {
-        axios.post('http://localhost:4090/addreview', {name, rating, description});
+        axios.post('http://localhost:4090/addreview', {itemId, name, returnedRating, description});
     }
 
     const labels: { [index: string]: string } = {
@@ -56,7 +62,8 @@ function ReviewForm() {
                             precision={0.5}
                             getLabelText={getLabelText}
                             onChange={(event, newValue) => {
-                            setRating(newValue);
+                            setRating(newValue?newValue:0.5);
+                            setReturnedRating(Number(rating)*2);
                             }}
                             onChangeActive={(event, newHover) => {
                                 setHover(newHover);
@@ -73,7 +80,16 @@ function ReviewForm() {
                         <TextField value={description} onChange={(e) => setDescription(e.target.value)} id="description" label="Description" variant="standard" fullWidth multiline/>
                     </div>
                     <div style={{textAlign:"center"}}>
-                        <Link to={{pathname: '/iteminfo'}}>
+                        <Link to={{pathname: '/iteminfo'}} state={{
+                            itemId: itemId, 
+                            itemName: itemName, 
+                            image: image, 
+                            itemPrice: itemPrice, 
+                            itemBrand: itemBrand,
+                            itemButtons: itemButtons,
+                            itemAnalog: itemAnalog,
+                            compatibleSystems: compatibleSystems}}
+                        >
                             <Button onClick={(e) => submitForm(e)} variant="contained" sx={{marginBottom:"30px", backgroundColor:"#808080", "&:hover": {backgroundColor: "#6b6b6b", boxShadow: 5} }} className="Navbar-button">Submit Review</Button>
                         </Link>
                     </div>

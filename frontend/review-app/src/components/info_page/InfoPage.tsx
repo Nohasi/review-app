@@ -20,7 +20,16 @@ function InfoPage(){
                 itemAnalog={itemAnalog}
                 compatibleSystems={compatibleSystems}
             />
-            <ReviewsComponent />
+            <ReviewsComponent 
+                itemId={itemId}
+                itemName={itemName}
+                image={image}
+                itemPrice={itemPrice}
+                itemBrand={itemBrand}
+                itemButtons={itemButtons}
+                itemAnalog={itemAnalog}
+                compatibleSystems={compatibleSystems}
+            />
         </>
     );
 }

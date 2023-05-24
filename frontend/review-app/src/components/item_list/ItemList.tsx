@@ -20,7 +20,7 @@ function ItemList() {
                 <h1>Item List</h1>
                 <div>
                     {items.map((data, key) => {
-                        return <ItemCard itemId={data.itemId} itemName={data.itemName} image={data.itemImage}  itemPrice={data.itemPrice}itemBrand={data.itemBrand} itemButtons={data.itemButtons} itemAnalog={data.itemAnalog} compatibleSystems={data.compatibleSystems}/>;
+                        return <ItemCard key={key} itemId={data.itemId} itemName={data.itemName} image={data.itemImage}  itemPrice={data.itemPrice}itemBrand={data.itemBrand} itemButtons={data.itemButtons} itemAnalog={data.itemAnalog} compatibleSystems={data.compatibleSystems}/>;
                     })}
                 </div>
             </Container>
