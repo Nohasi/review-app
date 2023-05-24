@@ -6,7 +6,6 @@ import { Link, useLocation } from "react-router-dom";
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
 import '../../App.css';
-import itemDetails from "../../utils/itemDetails";
 
 
 function ReviewForm() {
@@ -19,9 +18,8 @@ function ReviewForm() {
     const [rating, setRating] = useState<number | null>(0);
     const [hover, setHover] = useState(-1);
 
-    let [returnedRating, setReturnedRating] = useState(0);
-
     function submitForm(e: React.MouseEvent<HTMLButtonElement>) {
+        let returnedRating = Number(rating)*2;
         axios.post('http://localhost:4090/addreview', {itemId, name, returnedRating, description});
     }
 
@@ -42,11 +40,7 @@ function ReviewForm() {
       function getLabelText(value: number) {
         return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
       }
-      
-      function HoverRating() {
-        const [value, setValue] = useState<number | null>(2);
-        const [hover, setHover] = useState(-1);
-      }
+
     return(
         <div>
             <Container sx={{paddingBottom: "30px"}}>
@@ -55,15 +49,14 @@ function ReviewForm() {
                         <TextField value={name} onChange={(e) => setName(e.target.value)} id="name" label="Name" variant="standard" fullWidth/>
                     </div>
                     <div style={{paddingBottom: "20px"}}>
-                    <Typography component="legend">Rating</Typography>
+                    <Typography component="legend">Rating{`${rating}`}</Typography>
                         <Rating
                             name="simple-controlled"
                             value={rating}
                             precision={0.5}
                             getLabelText={getLabelText}
                             onChange={(event, newValue) => {
-                            setRating(newValue?newValue:0.5);
-                            setReturnedRating(Number(rating)*2);
+                            setRating(newValue);
                             }}
                             onChangeActive={(event, newHover) => {
                                 setHover(newHover);
