@@ -2,16 +2,17 @@ import React from "react";
 import { Box } from "@mui/material";
 import Grid from '@mui/material/Grid';
 import InfoTable from "./InfoTable";
+import itemDetails from "../../utils/itemDetails";
 
-function ItemDetails() {
+function ItemDetails(props: itemDetails) {
       
     return (
         <div>
             <Box sx={{ flexGrow: 1, paddingLeft: '30px', paddingRight: '30px' }}>
-                <h1 style={{paddingBottom: '30px'}}>Qanba Obsidian 2</h1>
+                <h1 style={{paddingBottom: '30px'}}>{`${props.itemName}`}</h1>
                 <Grid container spacing={2} >
                     <Grid item xs={4} style={{
-                        backgroundImage: 'url("https://cdn11.bigcommerce.com/s-tk3bsu7rib/images/stencil/1280x1280/products/133/570/Obsidian_2_ARCADE_JOYSTICKBLACK__49126.1681176700.jpg?c=2")',
+                        backgroundImage: `url("${props.image}")`,
                         backgroundSize: 'contain',
                         height:'300px',
                         backgroundRepeat: 'no-repeat',
@@ -19,7 +20,16 @@ function ItemDetails() {
                     }}>
                     </Grid>
                     <Grid item xs={8}>
-                        <InfoTable />
+                        <InfoTable 
+                            itemName={props.itemName} 
+                            itemId={props.itemId} 
+                            image={props.image} 
+                            itemPrice={props.itemPrice} 
+                            itemBrand={props.itemBrand} 
+                            itemButtons={props.itemButtons} 
+                            itemAnalog={props.itemAnalog} 
+                            compatibleSystems={props.compatibleSystems} 
+                        />
                     </Grid>
                 </Grid>
             </Box>

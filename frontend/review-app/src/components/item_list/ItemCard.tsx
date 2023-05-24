@@ -1,17 +1,24 @@
 import { Box } from "@mui/material";
 import Grid from '@mui/material/Grid';
 import {Link} from 'react-router-dom';
+import itemDetails from "../../utils/itemDetails";
 
-
-function ItemCard(){
+function ItemCard(props: itemDetails){
     return (
         <div>
             <Link style={{ textDecoration: 'none', color: "black" }} to={{
-            pathname: '/iteminfo',}}>
+            pathname: '/iteminfo'}} state={{itemId: props.itemId, itemName: 
+                props.itemName, 
+                image: props.image, 
+                itemPrice: props.itemPrice, 
+                itemBrand: props.itemBrand,
+                itemButtons: props.itemButtons,
+                itemAnalog: props.itemAnalog,
+                compatibleSystems: props.compatibleSystems}}>
                 <Box sx={{ flexGrow: 1, padding: "30px", "&:hover": {backgroundColor: "#e5e5e5", boxShadow: 10}}}>
                     <Grid container spacing={2} >
                         <Grid item xs={4} style={{
-                            backgroundImage: 'url("https://cdn11.bigcommerce.com/s-tk3bsu7rib/images/stencil/1280x1280/products/133/570/Obsidian_2_ARCADE_JOYSTICKBLACK__49126.1681176700.jpg?c=2")',
+                            backgroundImage: `url("${props.image}")`,
                             backgroundSize: 'contain',
                             height:'150px',
                             backgroundRepeat: 'no-repeat'
@@ -19,8 +26,8 @@ function ItemCard(){
                         </Grid>
                         <Grid item xs={8}>
                             <Box sx={{lineHeight: "35px"}}>
-                                <h2>Qanba Obsidian 2</h2>
-                                Qanba
+                                <h2>{`${props.itemName}`}</h2>
+                                {`${props.itemBrand}`}
                             </Box>
                         </Grid>
                     </Grid>
