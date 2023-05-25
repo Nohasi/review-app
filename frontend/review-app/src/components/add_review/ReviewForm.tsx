@@ -49,7 +49,7 @@ function ReviewForm() {
                         <TextField value={name} onChange={(e) => setName(e.target.value)} id="name" label="Name" variant="standard" fullWidth/>
                     </div>
                     <div style={{paddingBottom: "20px"}}>
-                    <Typography component="legend">Rating{`${rating}`}</Typography>
+                    <Typography component="legend">Rating</Typography>
                         <Rating
                             name="simple-controlled"
                             value={rating}
