@@ -17,7 +17,7 @@ function ReviewsComponent(props: itemDetails){
 
     useEffect(() => {
         getReviews()
-      }, []);
+    });
 
     return(
         <Box sx={{ flexGrow: 1, textAlign: 'center', padding: '30px'}}>

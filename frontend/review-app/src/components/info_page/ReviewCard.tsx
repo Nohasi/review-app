@@ -1,7 +1,6 @@
 import { Box, Container } from "@mui/material";
 import Grid from '@mui/material/Grid';
 import Rating from '@mui/material/Rating';
-import Typography from '@mui/material/Typography';
 
 interface reviewProps {
     name: string,
